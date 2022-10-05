@@ -5,7 +5,10 @@ public enum Message {
     INPUT_REPEAT_COUNT("시도할 회수는 몇회인가요?"),
     RESULT("실행 결과"),
     WINNER("최종 우승자 : %s"),
-    ERROR_LENGTH_OF_CAR_NAME("자동차 이름은 5자 이하로만 설정 가능합니다.");
+    ERROR_LENGTH_OF_CAR_NAME("[ERROR] 자동차 이름은 5자 이하로만 설정 가능합니다."),
+    ERROR_MORE_THAN_TWO("[ERROR] 자동차 이름을 2개 이상 입력해주세요."),
+    ERROR_CANNOT_INCLUDE_BLANK("[ERROR] 자동차 이름에 공백을 포함할 수 없습니다."),
+    ERROR_DUPLICATE_OF_CAR_NAME("[ERROR] 자동차 이름이 중복됩니다.");
 
     private final String message;
 

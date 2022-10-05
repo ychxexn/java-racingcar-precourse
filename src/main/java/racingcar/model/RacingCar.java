@@ -11,15 +11,8 @@ public class RacingCar {
     private int position;
 
     public RacingCar(String name) {
-        if(!isValidLengthOfName(name)){
-            throw new IllegalArgumentException(Message.ERROR_LENGTH_OF_CAR_NAME.getMessage());
-        }
-
         this.name = name;
         this.position = 0;
-    }
-    private boolean isValidLengthOfName(String name) {
-        return name.length() <= RacingGameUtil.MAX_LENGTH_OF_CAR_NAME;
     }
 
     public String getName() {

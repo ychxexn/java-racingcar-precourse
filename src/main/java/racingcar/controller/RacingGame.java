@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingCarNames;
 import racingcar.model.RacingCars;
 import racingcar.util.Message;
 import racingcar.view.InputView;
@@ -32,8 +33,13 @@ public class RacingGame {
     }
 
     private void inputRacingCarName() {
-        String input = InputView.getCarNames();
-        saveRacingCarName(input.split(","));
+        try {
+            RacingCarNames racingCarNames = new RacingCarNames(InputView.getCarNames());
+            saveRacingCarName(racingCarNames.getNames());
+        }catch (IllegalArgumentException e) {
+            OutputView.print(e.getMessage());
+            inputRacingCarName();
+        }
     }
 
     private void saveRacingCarName(String[] arrCarName) {
