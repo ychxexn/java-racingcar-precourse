@@ -9,12 +9,12 @@ public class RacingCar {
 
     public RacingCar(String name) {
         if(!isValidLengthOfName(name)){
-            throw new IllegalArgumentException(RacingGameUtil.PREFIX_ERROR + Message.ERROR_LENGTH_OF_CAR_NAME.getMessage());
+            throw new IllegalArgumentException(Message.ERROR_LENGTH_OF_CAR_NAME.getMessage());
         }
 
         this.name = name;
     }
     private boolean isValidLengthOfName(String name) {
-        return name.length() <= RacingGameUtil.LENGTH_OF_CAR_NAME;
+        return name.length() <= RacingGameUtil.MAX_LENGTH_OF_CAR_NAME;
     }
 }
