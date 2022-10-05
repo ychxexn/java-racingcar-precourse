@@ -10,8 +10,10 @@ public class RacingCars {
         this.racingCars = new ArrayList<>();
     }
 
-    public void add(RacingCar racingCar) {
-        racingCars.add(racingCar);
+    public void add(String[] carNames) {
+        for(String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
+        }
     }
 
     public RacingCar get(int index) {

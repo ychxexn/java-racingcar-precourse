@@ -36,17 +36,10 @@ public class RacingGame {
     private void inputRacingCarName() {
         try {
             RacingCarNames racingCarNames = new RacingCarNames(InputView.getCarNames());
-            saveRacingCarName(racingCarNames.getNames());
+            racingCars.add(racingCarNames.getNames());
         }catch (IllegalArgumentException e) {
             OutputView.print(e.getMessage());
             inputRacingCarName();
-        }
-    }
-
-    private void saveRacingCarName(String[] arrCarName) {
-        for(String carName : arrCarName) {
-            RacingCar newRacingCar = new RacingCar(carName);
-            racingCars.add(newRacingCar);
         }
     }
 
