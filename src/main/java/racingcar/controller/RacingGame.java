@@ -7,6 +7,7 @@ import racingcar.view.InputView;
 public class RacingGame {
 
     private final RacingCars racingCars;
+    private int repeatCount;
 
     public RacingGame() {
         this.racingCars = new RacingCars();
@@ -14,6 +15,7 @@ public class RacingGame {
 
     public void play() {
         inputRacingCarName();
+        inputRepeatCount();
     }
 
     private void inputRacingCarName() {
@@ -26,5 +28,9 @@ public class RacingGame {
             RacingCar newRacingCar = new RacingCar(carName);
             racingCars.add(newRacingCar);
         }
+    }
+
+    private void inputRepeatCount() {
+        this.repeatCount = InputView.getRepeatCount();
     }
 }
