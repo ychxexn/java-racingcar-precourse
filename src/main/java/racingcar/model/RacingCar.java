@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import racingcar.util.Message;
 import racingcar.util.RacingGameUtil;
 import racingcar.view.OutputView;
 

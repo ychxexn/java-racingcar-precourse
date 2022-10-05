@@ -30,7 +30,7 @@ public class RacingCarNamesTest {
 
     @DisplayName(value = "공백 포함한 자동차이름 생성")
     @ParameterizedTest
-    @ValueSource(strings = {"람 보르기니,BMW,벤 츠,소 나 타"})
+    @ValueSource(strings = {"람 보르기,BMW,벤 츠,소 나 타"})
     void 공백_포함한_자동차이름_생성(String carName) {
         assertThatThrownBy(() -> new RacingCarNames(carName)).isInstanceOf(IllegalArgumentException.class);
     }

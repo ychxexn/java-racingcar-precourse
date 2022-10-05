@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import org.junit.platform.commons.util.StringUtils;
 import racingcar.util.Message;
 import racingcar.util.RacingGameUtil;
 
@@ -12,18 +13,18 @@ public class RacingCarNames {
 
     public RacingCarNames(String names) {
         this.names = names.split(",");
-        checkEmpty();
-        checkBlank();
+        checkMoreThanTwoNames();
+        checkElement();
         checkDuplicate();
     }
 
-    private void checkEmpty() {
+    private void checkMoreThanTwoNames() {
         if(names.length < 2) {
             throw new IllegalArgumentException(Message.ERROR_MORE_THAN_TWO.getMessage());
         }
     }
 
-    private void checkBlank() {
+    private void checkElement() {
         for(String name : names) {
             checkBlankOrEmpty(name);
             checkLength(name);
@@ -31,7 +32,7 @@ public class RacingCarNames {
     }
 
     private void checkBlankOrEmpty(String name) {
-        if(!name.equals(name.trim()) || name.length() == 0) {
+        if(StringUtils.containsWhitespace(name) || name.length() == 0) {
             throw new IllegalArgumentException(Message.ERROR_CANNOT_INCLUDE_BLANK.getMessage());
         }
     }
