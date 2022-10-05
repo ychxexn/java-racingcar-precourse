@@ -2,6 +2,7 @@ package racingcar.model;
 
 import racingcar.util.Message;
 import racingcar.util.RacingGameUtil;
+import racingcar.view.OutputView;
 
 public class RacingCar {
 
@@ -33,5 +34,17 @@ public class RacingCar {
         if(number >= RacingGameUtil.MOVABLE_NUMBER) {
             position++;
         }
+    }
+
+    public void printPosition() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getName());
+        sb.append(" : ");
+        for(int i=0; i<getPosition(); i++) {
+            sb.append("-");
+        }
+
+        OutputView.print(sb.toString());
     }
 }

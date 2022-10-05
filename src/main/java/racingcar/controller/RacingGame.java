@@ -3,7 +3,9 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
+import racingcar.util.Message;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGame {
 
@@ -17,8 +19,11 @@ public class RacingGame {
     public void play() {
         inputRacingCarName();
         inputRepeatCount();
+        OutputView.print(Message.RESULT.getMessage());
         for(int i=0; i<repeatCount; i++) {
             playRound();
+            printRound();
+            OutputView.printLine();
         }
     }
 
@@ -42,6 +47,12 @@ public class RacingGame {
         for(int i=0; i<racingCars.size(); i++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             racingCars.get(i).moveOrNot(randomNumber);
+        }
+    }
+
+    private void printRound() {
+        for(int i=0; i< racingCars.size(); i++) {
+            racingCars.get(i).printPosition();
         }
     }
 }
