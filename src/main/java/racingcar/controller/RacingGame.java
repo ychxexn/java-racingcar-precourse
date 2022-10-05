@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCarNames;
 import racingcar.model.RacingCars;
+import racingcar.model.Round;
 import racingcar.util.Message;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -14,7 +15,7 @@ import java.util.List;
 public class RacingGame {
 
     private final RacingCars racingCars;
-    private int repeatCount;
+    private Round round;
 
     public RacingGame() {
         this.racingCars = new RacingCars();
@@ -22,9 +23,9 @@ public class RacingGame {
 
     public void play() {
         inputRacingCarName();
-        inputRepeatCount();
+        inputRound();
         OutputView.print(Message.RESULT.getMessage());
-        for(int i=0; i<repeatCount; i++) {
+        for(int i=0; i<round.getRound(); i++) {
             playRound();
             printRound();
             OutputView.printLine();
@@ -49,8 +50,13 @@ public class RacingGame {
         }
     }
 
-    private void inputRepeatCount() {
-        this.repeatCount = InputView.getRepeatCount();
+    private void inputRound() {
+        try {
+            this.round = new Round(InputView.getRound());
+        }catch (IllegalArgumentException e) {
+            OutputView.print(e.getMessage());
+            inputRound();
+        }
     }
 
     private void playRound() {

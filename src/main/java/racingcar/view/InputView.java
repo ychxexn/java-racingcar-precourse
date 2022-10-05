@@ -9,10 +9,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int getRepeatCount() {
+    public static String getRound() {
         System.out.println(Message.INPUT_REPEAT_COUNT.getMessage());
-        String input = Console.readLine();
-
-        return Integer.parseInt(input);
+        return Console.readLine();
     }
 }
