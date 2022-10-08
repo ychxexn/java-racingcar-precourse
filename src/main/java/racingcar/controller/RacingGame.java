@@ -9,16 +9,15 @@ import racingcar.util.Message;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
 
     private final RacingCars racingCars;
+    private RacingCars winners;
     private Round round;
 
     public RacingGame() {
         this.racingCars = new RacingCars();
+        this.winners = new RacingCars();
     }
 
     public void play() {
@@ -31,6 +30,7 @@ public class RacingGame {
             OutputView.printLine();
         }
         calculateResult();
+        printResult();
     }
 
     private void inputRacingCarName() {
@@ -67,34 +67,30 @@ public class RacingGame {
 
     private void calculateResult() {
         int maxPosition = 0;
-        List<String> winnerList = new ArrayList<>();
 
         for(int i=0; i<racingCars.size(); i++) {
             RacingCar racingCar = racingCars.get(i);
-            maxPosition = getMaxPositionAndInitWinnerList(winnerList, racingCar, maxPosition);
-            addWinner(winnerList, racingCar, maxPosition);
+            maxPosition = getMaxPositionAndInitWinnerList(racingCar, maxPosition);
+            addWinner(racingCar, maxPosition);
         }
-
-        printResult(winnerList);
     }
 
-    private int getMaxPositionAndInitWinnerList(List<String> winnerList, RacingCar racingCar, int maxPosition) {
+    private int getMaxPositionAndInitWinnerList(RacingCar racingCar, int maxPosition) {
         if(racingCar.getPosition() > maxPosition) {
-            winnerList.clear();
+            winners = new RacingCars();
             return racingCar.getPosition();
         }
 
         return maxPosition;
     }
 
-    private void addWinner(List<String> winnerList, RacingCar racingCar, int maxPosition) {
+    private void addWinner(RacingCar racingCar, int maxPosition) {
         if(racingCar.getPosition() == maxPosition) {
-            winnerList.add(racingCar.getName());
+            winners.add(racingCar);
         }
     }
 
-    private void printResult(List<String> winnerList) {
-        String winners = winnerList.toString();
-        OutputView.print(String.format(Message.WINNER.getMessage(), winners.substring(1, winners.length()-1)));
+    private void printResult() {
+        OutputView.print(String.format(Message.WINNER.getMessage(), winners.toString()));
     }
 }
