@@ -39,4 +39,9 @@ public class RacingCar {
 
         OutputView.print(sb.toString());
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

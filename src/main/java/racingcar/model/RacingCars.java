@@ -16,11 +16,21 @@ public class RacingCars {
         }
     }
 
+    public void add(RacingCar racingCar) {
+        racingCars.add(racingCar);
+    }
+
     public RacingCar get(int index) {
         return racingCars.get(index);
     }
 
     public int size() {
         return racingCars.size();
+    }
+
+    @Override
+    public String toString() {
+        String str = racingCars.toString();
+        return str.substring(1, str.length() - 1);
     }
 }
