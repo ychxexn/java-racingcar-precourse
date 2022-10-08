@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import racingcar.util.Message;
 import racingcar.util.RacingGameUtil;
 import racingcar.view.OutputView;
 
@@ -32,9 +33,9 @@ public class RacingCar {
         StringBuilder sb = new StringBuilder();
 
         sb.append(getName());
-        sb.append(" : ");
+        sb.append(Message.SEPARATOR.getMessage());
         for(int i=0; i<getPosition(); i++) {
-            sb.append("-");
+            sb.append(Message.DASH.getMessage());
         }
 
         OutputView.print(sb.toString());

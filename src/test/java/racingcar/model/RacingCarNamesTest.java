@@ -35,7 +35,7 @@ public class RacingCarNamesTest {
         assertThatThrownBy(() -> new RacingCarNames(carName)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName(value = "공백 포함한 자동차이름 생성")
+    @DisplayName(value = "중복된 자동차이름 생성")
     @ParameterizedTest
     @ValueSource(strings = {"람보르기니,람보르기니", "car,car2,car2", "car3,car1,car2,car3"})
     void 중복된_자동차이름_생성(String carName) {
