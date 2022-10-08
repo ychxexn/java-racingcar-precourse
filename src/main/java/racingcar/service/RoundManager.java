@@ -23,7 +23,7 @@ public class RoundManager {
 
     public void moveCars() {
         for(int i=0; i<racingCars.size(); i++) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
             racingCars.get(i).moveOrNot(randomNumber);
         }
     }
